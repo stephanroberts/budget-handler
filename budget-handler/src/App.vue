@@ -1,23 +1,26 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { computed } from 'vue';
+import { RouterView, useRoute } from 'vue-router'
+
+const route = useRoute();
+
+const showHeader = computed((): boolean => {
+  let show = true;
+  if (route.name === 'login') {
+    show = false;
+  }
+  return show;
+});
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header v-if="showHeader">
+    <p>Budgethandler</p>
   </header>
 
   <RouterView />
+  <div id="dark-background"></div>
 </template>
 
 <style scoped>

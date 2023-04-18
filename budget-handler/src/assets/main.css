@@ -1,35 +1,103 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
-
   font-weight: normal;
+  text-align: center;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.vertical-container {
+  height: 100vh;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.clear-flex {
+  display: block;
+  clear: both;
 }
+
+.input-border {
+  background-color: var(--light-blue);
+  padding: 1.2rem;
+  border-radius: 6.6rem;
+  margin: 2.4rem 0rem;
+  text-align: start;
+  width: 100%;
+}
+
+.input-icon {
+  position: relative;
+  top: 0.2rem;
+}
+
+.form-input {
+  border: none;
+  color: var(--purple-black);
+  background-color: transparent;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  position: relative;
+  top: -0.5rem;
+  padding: 0 0.6rem;
+  max-width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.button {
+  border: none;
+  border-radius: 6.6rem;
+  box-shadow: 0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.33);
+  color: var(--purple-white);
+  background-color: var(--action-purple);
+  padding: 2rem 2.4rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  min-width: 18rem;
+}
+
+.on-bottom {
+  margin: auto;
+  top: -2.8rem;
+}
+
+
+.login-form {
+  margin: auto;
+  background-color: var(--purple-white);
+  padding: 2.4rem;
+  border-radius: 6.6rem;
+  text-align: center;
+  height: 50rem;
+  width: 100%;
+  max-width: 60rem;
+}
+
+.login-container {
+  margin: 0;
+  transform: translate(0, 25%);
+  width: 100%;
+  padding: 2.4rem;
+  text-align: center;
+}
+
+.logo {
+  width: 17.6rem;
+  height: 2.9rem;
+  margin-bottom: 6rem;
+}
+
+
