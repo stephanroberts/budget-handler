@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router'
+import HeaderUserButtonComponent from './components/HeaderUserButtonComponent.vue';
+import HeaderExpenseGroupComponent from './components/HeaderExpenseGroupComponent.vue';
 
 const route = useRoute();
 
@@ -16,7 +18,8 @@ const showHeader = computed((): boolean => {
 
 <template>
   <header v-if="showHeader">
-    <p>Budgethandler</p>
+    <HeaderUserButtonComponent v-if="route.name === 'home'"></HeaderUserButtonComponent>
+    <HeaderExpenseGroupComponent v-else></HeaderExpenseGroupComponent>
   </header>
 
   <RouterView />

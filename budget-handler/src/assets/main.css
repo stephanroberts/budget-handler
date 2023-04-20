@@ -7,17 +7,6 @@
   text-align: center;
 }
 
-p {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.9rem;
-}
-
-.vertical-container {
-  height: 100vh;
-}
-
 .clear-flex {
   display: block;
   clear: both;
@@ -30,11 +19,13 @@ p {
   margin: 2.4rem 0rem;
   text-align: start;
   width: 100%;
+  display: flex;
+  align-items: start;
 }
 
-.input-icon {
-  position: relative;
-  top: 0.2rem;
+
+.form-container {
+  width: 100%;
 }
 
 .form-input {
@@ -44,9 +35,9 @@ p {
   font-style: normal;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.9rem;
   position: relative;
-  top: -0.5rem;
+  top: 0.5rem;
+  line-height: 1.9rem;
   padding: 0 0.6rem;
   max-width: 100%;
 }
@@ -55,7 +46,7 @@ p {
   outline: none;
 }
 
-.button {
+button {
   border: none;
   border-radius: 6.6rem;
   box-shadow: 0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.33);
@@ -67,13 +58,18 @@ p {
   font-size: 1.4rem;
   line-height: 1.7rem;
   min-width: 18rem;
-}
-
-.on-bottom {
   margin: auto;
-  top: -2.8rem;
 }
 
+.icon-btn {
+  padding: 1.2rem;
+}
+
+button:disabled {
+  color: var(--disabled-grey);
+  background-color: var(--bright-grey);
+  box-shadow: none;
+}
 
 .login-form {
   margin: auto;
@@ -84,6 +80,8 @@ p {
   height: 50rem;
   width: 100%;
   max-width: 60rem;
+  display: flex;
+  align-items: center;
 }
 
 .login-container {

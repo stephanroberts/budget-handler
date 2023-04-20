@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "email": "stephan@budgethandler.de",
+      "password": "$2a$10$SpPYV9KOPpkzC/SJ13bUr.UEeqUEZyN47OXZkGhMevRxzKEcjLCuy",
+      "id": 1
+    },
+    {
+      "email": "stephan@budgethandler.de",
+      "password": "$2a$10$SpPYV9KOPpkzC/SJ13bUr.UEeqUEZyN47OXZkGhMevRxzKEcjLCuy",
+      "id": 2
+    }
+  ],
+  "budgetProjects": [
+    {
+      "id": "cbfa194c-1175-4516-bf10-82b0cf045377",
+      "title": "build a house",
+      "budget": 50000,
+      "sharedWith": [
+        "stephan@budgethandler.de"
+      ],
+      "expenseGroups": [
+        {
+          "title": "shell construction",
+          "percent": 30,
+          "color": "#A7ABFE",
+          "expenses": [
+            {
+              "title": "bricks 24er for inner walls",
+              "date": "12.12.2023",
+              "expense": 15000
+            },
+            {
+              "title": "bricks 36er for outer walls",
+              "date": "24.10.2023",
+              "expense": 25000
+            }
+          ]
+        }
+      ]
+
+    }
+  ]
+}

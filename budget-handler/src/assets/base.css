@@ -5,6 +5,8 @@
   --brighter-purple: #EFDDF8;
   --light-blue: #ECE8FD;
   --action-purple: #8663F8;
+  --disabled-grey: #969699;
+  --bright-grey: #B7B7BC;
   --purple-grey: #5E5E66;
   --purple-black: #191824;
 
@@ -43,13 +45,65 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 2.88rem;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+}
+
+p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+}
+
+.caption {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.56rem;
+  color: var(--purple-grey);
+}
+
 #dark-background {
   position: fixed;
   z-index: -1;
   background-color: var(--purple-grey);
   border-radius: 6.6rem 6.6rem 0 0;
   width: 100%;
-  max-width: 800px;
+  max-width: 80rem;
   height: 70vh;
   bottom: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  margin-top: 6.6rem;
+  margin-bottom: 6.6rem;
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 6.6rem;
+  background: var(--action-purple); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bright-grey); 
 }
