@@ -3,6 +3,8 @@ const en = {
     'next': 'next',
     'of': 'of',
     'consumed': 'consumed',
+    'Sum': 'Sum',
+    'left': 'left',
     'new budget project': 'new budget project',
 }
 

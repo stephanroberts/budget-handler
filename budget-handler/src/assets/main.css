@@ -36,7 +36,7 @@
   font-weight: 400;
   font-size: 1.6rem;
   position: relative;
-  top: 0.5rem;
+  margin: auto 0;
   line-height: 1.9rem;
   padding: 0 0.6rem;
   max-width: 100%;
@@ -54,7 +54,7 @@ button {
   background-color: var(--action-purple);
   padding: 2rem 2.4rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.4rem;
   line-height: 1.7rem;
   min-width: 18rem;

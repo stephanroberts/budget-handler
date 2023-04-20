@@ -3,6 +3,8 @@ import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router'
 import HeaderUserButtonComponent from './components/HeaderUserButtonComponent.vue';
 import HeaderExpenseGroupComponent from './components/HeaderExpenseGroupComponent.vue';
+import BottomNavBarComponent from './components/BottomNavBarComponent.vue';
+import EditOverlayComponent from './components/EditOverlayComponent.vue';
 
 const route = useRoute();
 
@@ -14,6 +16,17 @@ const showHeader = computed((): boolean => {
   return show;
 });
 
+const showBottomNavBar = computed((): boolean => {
+  let show = true;
+  if (route.name !== 'expenseGroupList') {
+    show = false;
+  }
+  if (route.name === 'login') {
+    show = false;
+  }
+  return show;
+})
+
 </script>
 
 <template>
@@ -23,7 +36,14 @@ const showHeader = computed((): boolean => {
   </header>
 
   <RouterView />
+
+  <BottomNavBarComponent v-if="showBottomNavBar"></BottomNavBarComponent>
   <div id="dark-background"></div>
+  <div id="edit-overlay-bg">
+    <div id="edit-overlay">
+      <EditOverlayComponent></EditOverlayComponent>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -32,34 +52,19 @@ header {
   max-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#edit-overlay-bg {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.33);
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
+#edit-overlay {
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 1024px) {
@@ -67,25 +72,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>

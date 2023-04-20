@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import ExpenseGroupService from '@/services/ExpenseGroupService'
 import type { IExpenseGroup } from '@/interfaces/IExpenseGroup';
+import ExpenseItemComponent from '@/components/ExpenseItemComponent.vue'
 
 
 const props = defineProps<{
@@ -9,11 +10,12 @@ const props = defineProps<{
     expenseGroup: IExpenseGroup;
 }>();
 
+const expenseGroupService = new ExpenseGroupService(props.expenseGroup);
+
 const expenseGroupBudget = ref<number>(0);
 const percentConsumedFromGroupBudget = ref<number>(0);
 
 onMounted(() => {
-    const expenseGroupService = new ExpenseGroupService(props.expenseGroup);
     expenseGroupBudget.value = expenseGroupService.getPercentAsSumBasedOnBudget(props.budgetSum);
     percentConsumedFromGroupBudget.value = expenseGroupService.getPercentConsumedFromGroupBudget(expenseGroupBudget.value);
 });
@@ -37,9 +39,10 @@ onMounted(() => {
                     {{ expenseGroup.percent }}% - {{ expenseGroupBudget }} €
                 </p>
             </div>
+            <ExpenseItemComponent v-for="expense in expenseGroup.expenses" :expense-item="expense"></ExpenseItemComponent>
             <hr>
-            <p>{{ $t('Sum') }} 40 000 €</p>
-            <p class="caption"> {{ percentConsumedFromGroupBudget.toLocaleString('de-DE', { maximumFractionDigits: 0}) }} {{ $t('of') }} {{ expenseGroup.percent }}% {{ $t('consumed') }}, 110 000 € {{ $t('left') }}.</p>
+            <p>{{ $t('Sum') }} {{ expenseGroupService.getExpenseSum().toLocaleString('de-DE') }} €</p>
+            <p class="caption"> {{ percentConsumedFromGroupBudget.toLocaleString('de-DE', { maximumFractionDigits: 0}) }} {{ $t('of') }} {{ expenseGroup.percent }}% {{ $t('consumed') }}, {{ expenseGroupService.getRestSum(expenseGroupBudget).toLocaleString('de-DE') }} € {{ $t('left') }}.</p>
         </main>
     </div>
 </template>
@@ -64,6 +67,10 @@ onMounted(() => {
 
 h3 {
     margin: auto 0.6rem;
+}
+
+hr {
+    margin: 2.4rem 0;
 }
 
 .color {

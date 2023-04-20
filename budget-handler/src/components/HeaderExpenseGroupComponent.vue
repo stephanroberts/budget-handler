@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import BudgetProjectService from '@/services/BudgetProjectService';
 import { useBudgetProjectStore } from '@/stores/budgetProject'
 
+const router = useRouter();
 const budgetProjectStore = useBudgetProjectStore();
 
 const budgetConsumedInPercent = ref<number>(0);
+
+function handleBackArrowClick() {
+    router.push({
+        name: 'home',
+    })
+}
 
 onMounted(() => {
     const budgetProjectService = new BudgetProjectService();
@@ -20,7 +28,7 @@ onMounted(() => {
 <template>
     <div class="container">
         <div class="header">
-            <div class="icon-btn">
+            <div class="icon-btn" @click="handleBackArrowClick()">
                 <img src="@/assets/icons//arrow-left-icon.svg" alt="arrow-left-icon">
             </div>
             <div class="headline">

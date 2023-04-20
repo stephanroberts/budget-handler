@@ -17,4 +17,15 @@ export default class ExpenseGroupService {
         });
         return 100 / groupBudget * consumedSum;
     }
+    public getExpenseSum(): number {
+        let sum = 0;
+        this.expenseGroup.expenses.forEach((expense: IExpenses) => {
+            sum += expense.expense;
+        });
+        return sum;
+    }
+
+    public getRestSum(groupBudget: number): number {
+        return groupBudget - this.getExpenseSum();
+    }
 }

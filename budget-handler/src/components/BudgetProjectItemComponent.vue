@@ -50,6 +50,7 @@ onMounted(() => {
     width: 100%;
     padding: 2.4rem;
     margin-bottom: 1.2rem;
+    box-shadow: 0rem 0.1rem 0.3rem rgba(0, 0, 0, 0.15);
 }
 
 .headline {
