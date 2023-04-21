@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { RouterView, useRoute } from 'vue-router'
+import { useOverlayStore } from './stores/overlay';
 import HeaderUserButtonComponent from './components/HeaderUserButtonComponent.vue';
 import HeaderExpenseGroupComponent from './components/HeaderExpenseGroupComponent.vue';
 import BottomNavBarComponent from './components/BottomNavBarComponent.vue';
 import EditOverlayComponent from './components/EditOverlayComponent.vue';
 
 const route = useRoute();
+const overlayStore = useOverlayStore();
 
 const showHeader = computed((): boolean => {
   let show = true;
@@ -39,11 +41,13 @@ const showBottomNavBar = computed((): boolean => {
 
   <BottomNavBarComponent v-if="showBottomNavBar"></BottomNavBarComponent>
   <div id="dark-background"></div>
-  <div id="edit-overlay-bg">
-    <div id="edit-overlay">
-      <EditOverlayComponent></EditOverlayComponent>
+  <Transition name="slide-fade">
+    <div v-if="overlayStore.isOverlayOpen" id="edit-overlay-bg">
+      <div id="edit-overlay">
+        <EditOverlayComponent></EditOverlayComponent>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -65,6 +69,20 @@ header {
 #edit-overlay {
   display: flex;
   justify-content: center;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(2rem);
+  opacity: 0;
 }
 
 @media (min-width: 1024px) {

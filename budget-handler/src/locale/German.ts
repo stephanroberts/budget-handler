@@ -6,6 +6,10 @@ const de = {
     'Sum': 'Summe',
     'left': 'übrig',
     'new budget project': 'neues Budget Projekt',
+    'edit budget project': 'Budget Project bearbeiten',
+    'Sharing partner per email': 'Sharing Partner per Email',
+    'save': 'speichern',
+    'delete': 'löschen',
 }
 
 export default de;

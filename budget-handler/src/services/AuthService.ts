@@ -25,6 +25,12 @@ export default class AuthService {
         return isLoginSuccess;
     }
 
+    public Logout() {
+        const cookieService = new CookieService();
+        cookieService.RemoveToken();
+        window.location.reload()
+    }
+
     private SetCookies(response: any) {
         const cookieService = new CookieService();
         cookieService.token = response.data.accessToken as string;

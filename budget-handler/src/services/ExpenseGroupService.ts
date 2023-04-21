@@ -28,4 +28,5 @@ export default class ExpenseGroupService {
     public getRestSum(groupBudget: number): number {
         return groupBudget - this.getExpenseSum();
     }
+
 }

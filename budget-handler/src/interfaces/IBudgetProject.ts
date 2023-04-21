@@ -5,5 +5,5 @@ export interface IBudgetProject {
     "title": string,
     "budget": number,
     "sharedWith": string[],
-    expenseGroups:IExpenseGroup[],
+    "expenseGroupIDs": string[],
 }

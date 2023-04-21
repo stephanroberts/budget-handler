@@ -9,36 +9,73 @@
       "email": "stephan@budgethandler.de",
       "password": "$2a$10$SpPYV9KOPpkzC/SJ13bUr.UEeqUEZyN47OXZkGhMevRxzKEcjLCuy",
       "id": 2
+    },
+    {
+      "email": "leonie@budgethandler.de",
+      "password": "$2a$10$rnadSzCa1pWfiiTcDKn1j.xH/PttkzKignZW297Ybedrt4Kmm9EEy",
+      "id": 3
     }
   ],
   "budgetProjects": [
     {
       "id": "cbfa194c-1175-4516-bf10-82b0cf045377",
-      "title": "build a house",
-      "budget": 50000,
+      "title": "Haus bauen",
+      "budget": 500000,
+      "sharedWith": [
+        "leonie@budgethandler.de",
+        "stephan@budgethandler.de"
+      ],
+      "expenseGroupIDs": [
+        "efd13e97-6a04-4d5c-8b8a-1af6dcc540a6"
+      ]
+    },
+    {
+      "id": "ca932146-f138-4c98-94b2-0982e326a74e",
+      "title": "Stephans Budget",
+      "budget": 53000,
       "sharedWith": [
         "stephan@budgethandler.de"
       ],
-      "expenseGroups": [
-        {
-          "title": "shell construction",
-          "percent": 30,
-          "color": "#A7ABFE",
-          "expenses": [
-            {
-              "title": "bricks 24er for inner walls",
-              "date": "12.12.2023",
-              "expense": 15000
-            },
-            {
-              "title": "bricks 36er for outer walls",
-              "date": "24.10.2023",
-              "expense": 25000
-            }
-          ]
-        }
+      "expenseGroupIDs": []
+    },
+    {
+      "id": "b5a8f921-9dae-4478-9c5b-120d6c1cb7cc",
+      "title": "Leonies Budget",
+      "budget": 250000,
+      "sharedWith": [
+        "leonie@budgethandler.de"
+      ],
+      "expenseGroupIDs": []
+    }
+  ],
+  "expenseGroups": [
+    {
+      "id": "efd13e97-6a04-4d5c-8b8a-1af6dcc540a6",
+      "budgetProjectId": "cbfa194c-1175-4516-bf10-82b0cf045377",
+      "title": "shell construction",
+      "percent": 30,
+      "color": "#A7ABFE",
+      "expenseIDs": [
+        "868b36fb-f156-4f84-bd72-d36844b38c43",
+        "a1c319cc-bee2-4f5c-bc3e-3a731b218f2e"
       ]
-
+    }
+  ],
+  "expenses": [
+    {
+      "id": "868b36fb-f156-4f84-bd72-d36844b38c43",
+      "expenseGroupID": "efd13e97-6a04-4d5c-8b8a-1af6dcc540a6",
+      "budgetProjectId": "cbfa194c-1175-4516-bf10-82b0cf045377",
+      "title": "bricks 24er for inner walls",
+      "date": "12.12.2023",
+      "expense": 15000
+    },
+    {
+      "id": "a1c319cc-bee2-4f5c-bc3e-3a731b218f2e",
+      "expenseGroupID": "efd13e97-6a04-4d5c-8b8a-1af6dcc540a6",
+      "title": "bricks 36er for outer walls",
+      "date": "24.10.2023",
+      "expense": 25000
     }
   ]
 }

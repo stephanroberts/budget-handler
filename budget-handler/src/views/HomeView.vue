@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useBudgetProjectStore } from '@/stores/budgetProject';
+import { useOverlayStore } from '@/stores/overlay';
 import BudgetProjectService from '@/services/BudgetProjectService';
 import type { IBudgetProject } from '@/interfaces/IBudgetProject';
 import BudgetProjectItemComponent from '@/components/BudgetProjectItemComponent.vue';
 
-const budgetProjects = ref<IBudgetProject[]>([]);
+const budgetProjectStore = useBudgetProjectStore();
+const overlayStore = useOverlayStore();
 
-onMounted(async ()=> {
-  const budgetProjectService = new BudgetProjectService();
-  await budgetProjectService.getBudgetProject().then((budgetProjectsResponse: IBudgetProject[]) => {
-    budgetProjects.value = budgetProjectsResponse;
-  })
+
+onMounted(()=> {
+  budgetProjectStore.storeBudgetProjectsFromApiInStore();
 })
 
 </script>
@@ -18,10 +19,10 @@ onMounted(async ()=> {
 <template>
   <div class="content-container">
     <main class="card">
-      <BudgetProjectItemComponent  v-for="budgetProject in budgetProjects" :budget-project="budgetProject"></BudgetProjectItemComponent>  
+      <BudgetProjectItemComponent  v-for="budgetProject in budgetProjectStore.budgetProjects" :budget-project="budgetProject"></BudgetProjectItemComponent>  
     </main>
     <div class="bottom-btn-container">
-      <button>{{ $t('new budget project') }}</button>
+      <button @click="overlayStore.isOverlayOpen = true">{{ $t('new budget project') }}</button>
     </div>
   </div>
 </template>

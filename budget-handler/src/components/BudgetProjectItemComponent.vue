@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useOverlayStore } from '@/stores/overlay';
 import BudgetProjectService from '@/services/BudgetProjectService';
 import type { IBudgetProject } from '@/interfaces/IBudgetProject';
 
 const router = useRouter();
+const overlayStore = useOverlayStore();
 
 const props = defineProps<{
     budgetProject: IBudgetProject,
@@ -21,22 +23,29 @@ function handleClickedOnBudgetProject() {
     });
 }
 
-onMounted(() => {
+function openEditOverlay() {
+    overlayStore.budgetProjectToEdit = props.budgetProject;
+    overlayStore.isOverlayOpen = true;
+}
+
+onMounted(async () => {
     const budgetProjectService = new BudgetProjectService()
-    consumedInPercent.value = budgetProjectService.getConsumedBudgetInPercent(props.budgetProject);
+    await budgetProjectService.getConsumedBudgetInPercent(props.budgetProject).then((response: number) => {
+        consumedInPercent.value = response;
+    });
 })
 
 </script>
 
 <template>
-    <div class="container" @click="handleClickedOnBudgetProject()">
+    <div class="container">
         <div class="headline">
-            <h3 class="name">{{ props.budgetProject.title }}</h3>
-            <div class="icon-btn">
+            <h3 class="name" @click="handleClickedOnBudgetProject()">{{ props.budgetProject.title }}</h3>
+            <div class="icon-btn" @click="openEditOverlay()">
                 <img src="@/assets/icons/edit-icon.svg" alt="edit-icon">
             </div>
         </div>
-        <div class="informations">
+        <div class="informations" @click="handleClickedOnBudgetProject()">
             <p class="sum">{{ props.budgetProject.budget }} €</p>
             <p class="caption">{{ consumedInPercent }} % {{ $t('consumed') }}</p>
         </div>

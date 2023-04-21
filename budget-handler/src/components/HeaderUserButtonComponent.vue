@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import CookieService from '@/services/CookieService';
+import AuthService from '@/services/AuthService';
 
 const currentUser = ref<string>('');
+
+function handleClickOnUserButton() {
+    const authService = new AuthService();
+    authService.Logout();
+}
 
 onMounted(() => {
     const cookieService = new CookieService();
@@ -17,7 +23,7 @@ onMounted(() => {
 
 <template>
     <div class="container">
-        <div class="user-btn">
+        <div class="user-btn" @click="handleClickOnUserButton()">
             <img src="@/assets/icons/user-icon.svg" alt="user-icon">
             <div class="user-btn-text">{{ currentUser }}</div>
             <img src="@/assets/icons/chevron-down-icon.svg" alt="chevron-down-icon">
